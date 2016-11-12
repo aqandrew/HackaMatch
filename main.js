@@ -1,4 +1,3 @@
-angular.module('hackathonAidApp', []).controller('hackathonAidController', ['$scope', function($scope){
-
+angular.module('hackathonAidApp', []).controller('hackathonAidController', function ($scope) {
 	$scope.test = "Butt";
-}]);
+});
