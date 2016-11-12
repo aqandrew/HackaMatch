@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-<title>Hacker Aid</title>
+<title>HackaMatch</title>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="angular.min.js"></script>
   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
   <link rel="shortcut icon" href="resources/HackaMatch logo.png">
   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="resources/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
   <meta name="google-signin-client_id" content="58217435877-2ravuqepnimi797leb3v42vpqcgrtrhl.apps.googleusercontent.com">
 </head>
 <body>
@@ -28,7 +31,8 @@
 <header class="w3-container w3-theme w3-padding" id="myHeader">
   <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-opennav"></i>
   <div class="w3-center">
-  <h1 class="w3-xxxlarge w3-animate-bottom">Hackathon Aid</h1>
+    <img src="resources/HackaMatch logo.png" height="300"/>
+    <h1 class="w3-xxxlarge w3-animate-bottom">HackaMatch</h1>
     <div class="w3-padding-32">
       <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey" onclick="document.getElementById('id01').style.display='block'" style="font-weight:900;">Register</button>
     </div>
@@ -540,6 +544,20 @@ class creates progress bars:</p>
   </div>
   <p>Remember to check out our  <a href="w3css_references.asp" class="w3-btn w3-theme-light" target="_blank">W3.CSS Reference</a></p>
 </footer>
+
+<!-- Trianglify the background! -->
+<script>
+  var greys = ['#8B8B8B', '#000000'];
+  var triUri = Trianglify({
+    width: window.innerWidth,
+    height: window.innerHeight,
+    x_colors: greys,
+    y_colors: greys
+  }).png();
+
+  $('#myHeader').css('background', 'url(' + triUri + ')');
+  $('#myHeader').css('background-attachment', 'fixed');
+</script>
 
 <!-- Script for Sidenav, Tabs, Accordions, Progress bars and slideshows -->
 <script>
