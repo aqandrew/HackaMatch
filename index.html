@@ -53,7 +53,7 @@
             </div>
           </div>
           <div class="w3-group">
-            <ul class="interest-list">
+            <ul id="interest-list">
               <li ng-repeat="interest in allInterests">
                 <div class="w3-btn w3-round-xxlarge interest-button" ng-class="{'interest-active': isChosen(interest), 'interest-inactive': !isChosen(interest)}" ng-click="interestClicked(interest)" id="{{kebabify(interest)}}-button">
                   {{interest}}
@@ -134,7 +134,7 @@
     <div class="github-icon"></div>
     Github
   </a>
-  <div class="w3-center">
+  <div class="w3-center" id="header-content">
     <img src="resources/HackaMatch logo.png" height="300"/>
     <h1 class="w3-xxxlarge w3-animate-bottom">HackaMatch</h1>
     <h2>

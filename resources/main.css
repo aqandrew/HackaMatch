@@ -2,11 +2,19 @@ h1 {
 	font-family: 'Montserrat', sans-serif;
 }
 
+h2 {
+	margin-bottom: 0px;
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
 }
 
-.interest-list > li {
+#interest-list {
+	border-bottom: 1px solid #808080;
+}
+
+#interest-list > li {
 	display: inline;
 }
 
@@ -126,4 +134,11 @@ body {
 	color: #fff;
 	background-color: #AABEE8;
 	margin: 4px 0px;
+}
+
+#header-content {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translateY(-50%);
 }
