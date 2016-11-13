@@ -124,6 +124,10 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 
 		$http(req).then(function returnData(res){
 			console.log(res);
+			console.log(res.status);
+			if(res.status === 200){
+				document.getElementById('id01').style.display='none';
+			}
 		});
 	};
 
