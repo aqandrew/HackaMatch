@@ -269,6 +269,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 
 	$scope.setFindMode = function (mode) {
 		if(mode === 'members'){
+			$scope.dummyHackers = [];
 			//get data for users from backend
 			var req = {
 				method: 'GET',
@@ -282,13 +283,13 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 					 $scope.dummyHackers.push({
 					 	'id': temp.ID,
 					 	'name': temp.name,
+					 	'school': temp.school,
 					 	'iconUrl' : temp.pictureURL,
 					 	'major' : temp.major,
 					 	'github' : temp.userGitHub,
 					 	'skills' : temp.progLanguages,
 					 	'experience' : temp.experience,
-					 	'interests' : [
-					 		'None']
+					 	'interests' : temp.interests.split(',')
 					 });
 				};
 
