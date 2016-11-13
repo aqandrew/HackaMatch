@@ -58,19 +58,22 @@
           <div class="g-signin2" data-onsuccess="onSignIn"></div>
           <h3 ng-if="true">Hi, {{hackerName}}!</h3>
           <div class="w3-group">
-            <input class="w3-input" type="text" required>
+            <input ng-model="school" class="w3-input" type="text" required>
             <label class="w3-label">School</label>
           </div>
           <div class="w3-group">
-            <input class="w3-input" type="text">
+            <input class="w3-input" type="text" ng-model="major">
             <label class="w3-label">Major</label>
           </div>
           <div class="w3-dropdown-hover">
-            <button class="w3-btn mh-green">Previous Hackathons</button>
+            <div class="w3-btn mh-green" type="text">Previous Hackathons</div>
             <div class="w3-dropdown-content w3-border">
-              <a href="#">0: Novice</a>
-              <a href="#">1-5: Veteran</a>
-              <a href="#">5+: Expert</a>
+              <a href="#" ng-click="experienceClicked(0)">0: Novice</a>
+              <a href="#" ng-click="experienceClicked(1)">1-5: Veteran</a>
+              <a href="#" ng-click="experienceClicked(2)">5+: Expert</a>
+            </div>
+            <div>
+              {{experience}} years
             </div>
           </div>
           <div class="w3-group">
@@ -84,11 +87,11 @@
             <label class="w3-label">Interests</label>
           </div>
           <div class="w3-group">
-            <textarea class="w3-input" style="resize:none"></textarea>
+            <textarea class="w3-input" ng-model="progLanguage" style="resize:none"></textarea>
             <label class="w3-label">Skills/Programming Languages Known, Separated by Commas</label>
           </div>
           <div class="w3-group">
-            <textarea class="w3-input" style="resize:none"></textarea>
+            <textarea class="w3-input" style="resize:none" ></textarea>
             <label class="w3-label">Comments</label>
           </div>
           <button type="submit" class="w3-btn w3-indigo w3-large">Submit</button>

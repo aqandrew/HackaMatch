@@ -2,9 +2,15 @@
 
 var hackaMatch = angular.module('hackathonAidApp', []);
 
-hackaMatch.controller('hackathonAidController', function ($scope) {
+hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	window.onSignIn = onSignIn;
 	$scope.hackerName;
+	$scope.school;
+	$scope.hackerEmail;
+	$scope.hackerPicture;
+	$scope.major;
+	$scope.experience = 0;
+	$scope.progLanguage;
 
 	$scope.allInterests = [
 		'Data Science',
@@ -28,8 +34,8 @@ hackaMatch.controller('hackathonAidController', function ($scope) {
 	    console.log('Full Name: ' + profile.getName());
 	    //console.log('Given Name: ' + profile.getGivenName());
 	    console.log('Family Name: ' + profile.getFamilyName());
-	    console.log("Image URL: " + profile.getImageUrl());
-	    console.log("Email: " + profile.getEmail());
+	    $scope.hackerPicture = profile.getImageUrl();
+	    $scope.hackerEmail = profile.getEmail();
 
 	    $scope.hackerName = profile.getGivenName();
 	    $scope.$digest();
@@ -54,7 +60,37 @@ hackaMatch.controller('hackathonAidController', function ($scope) {
 		}
 	};
 
+	$scope.experienceClicked = function(value){
+		$scope.experience = value;
+		console.log(value);
+	}
+
 	$scope.submitForm = function () {
-		alert('huehuehue you submitted');
+		console.log($scope.school, $scope.hackerName, $scope.hackerEmail,
+					$scope.hackerPicture, $scope.major, $scope.chosenInterests,
+					$scope.experience, $scope.progLanguage);
+
+		var req = {
+			method: 'POST',
+			url: 'http://localhost:8080/api/users/new',
+			data:{
+				email: $scope.hackerEmail,
+				school: $scope.school,
+				name: $scope.hackerName,
+				picture: $scope.hackerPicture,
+				major: $scope.major,
+				interest: $scope.chosenInterests.join(','),
+				experience: $scope.experience,
+				progLanguage: $scope.progLanguage
+			}
+		};
+
+		$http(req).then(function returnData(res){
+			console.log(res);
+		});
 	};
+
+
+
+
 });
