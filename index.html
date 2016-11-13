@@ -109,7 +109,7 @@
       <h4>Choose a hackathon</h4>
     </header>
     <div class="w3-padding">
-      <button ng-repeat="hackathon in upcomingHackathons" ng-click="setCurrentHackathon(hackathon)" class="w3-btn">{{ hackathon }}</button>
+      <button ng-repeat="hackathon in upcomingHackathons" ng-click="setCurrentHackathon(hackathon)" class="w3-btn">{{ hackathon.name }}</button>
       <button ng-click="clearButtonMode()" class="w3-btn">Clear</button>
     </div>
   </div>
@@ -126,7 +126,7 @@
         <span ng-class="{ 'dotted-underline': findMode == 'group', 'no-dotted-underline': findMode != 'group' }">groups</span> or
         <span ng-class="{ 'dotted-underline': findMode == 'members', 'no-dotted-underline': findMode != 'members' }">hackers</span> at
         <span ng-class="{ 'dotted-underline': currentHackathon, 'no-dotted-underline': !currentHackathon }">
-          {{ currentHackathon ? currentHackathon + '!' : 'your hackathon!' }}
+          {{ currentHackathon ? currentHackathon.name + '!' : 'your hackathon!' }}
         </span>
     </h2>
     <div class="w3-padding-32">
