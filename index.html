@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>HackaMatch</title>
+<title>HackaMatch | Match with groups or hackers at your hackathon!</title>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="angular.min.js"></script>
@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="resources/main.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
   <script src="main.js"></script>
@@ -90,7 +89,7 @@
     <div class="w3-center">
       <img src="resources/HackaMatch logo.png" height="300"/>
       <h1 class="w3-xxxlarge w3-animate-bottom">HackaMatch</h1>
-      <h2>Match with groups or individual hackers at your hackathon!</h2>
+      <h2>Match with groups or hackers at your hackathon!</h2>
       <div class="w3-padding-32">
         <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" onclick="document.getElementById('id01').style.display='block'" style="font-weight:900;">{{infoLabel}}</button>
         <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" style="font-weight:900;">Create a group</button>
@@ -554,8 +553,8 @@
     y_colors: greys
   }).png();
 
-  $('#myHeader').css('background', 'url(' + triUri + ')');
-  $('#myHeader').css('background-attachment', 'fixed');
+  document.getElementById('myHeader').style.background = 'url(' + triUri + ')';
+  document.getElementById('myHeader').style.backgroundAttachment = 'fixed';
 </script>
 
 <!-- Script for Sidenav, Tabs, Accordions, Progress bars and slideshows -->
