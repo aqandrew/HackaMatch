@@ -82,3 +82,21 @@ body {
 	float: right;
 	color: #000;
 }
+
+.icon {
+	width: 100%;
+	height: auto;
+}
+
+.card-interest {
+	padding: 0;
+}
+
+.card-interest li {
+	list-style-type: none;
+}
+
+.hackathon-button {
+	box-shadow: 0px 2px 10px #222;
+	margin: 2px;
+}

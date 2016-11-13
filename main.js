@@ -93,7 +93,18 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 			'github': 'alo2',
 			'skills': 'medicine, law, tomfoolery, JavaScript',
 			'experience': 1,
-			'interests': $scope.allInterests
+			'interests': [
+				'Data Science',
+				'Frontend Development',
+				'Backend Development',
+				'Full-Stack Development',
+				'Mobile Development',
+				'Artificial Intelligence',
+				'Hardware',
+				'Video Games/Virtual Reality',
+				'Graphic Design',
+				'Business'
+			]
 		}
 	];
 	$scope.hackerGroups = [
