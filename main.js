@@ -26,7 +26,9 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		// TODO make the list year-agnostic
 		httpRequest.open('GET', 'https://mlh.io/seasons/na-2017/events', true);
 	};*/
-	$scope.currentHackathon;
+	$scope.currentHackathon = '';
+	$scope.findMode = '';
+	$scope.currentGroup = '';
 
 	$scope.allInterests = [
 		'Data Science',
@@ -44,8 +46,22 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	// TODO sync chosenInterests with backend info
 	$scope.chosenInterests = [];
 
+	$scope.createGroup = function () {
+		alert('you just created a group!');
+		document.getElementById('createGroupDialog').style.display='none';
+		$scopee.setFindMode('member');
+	};
+
+	$scope.clearButtonMode = function () {
+		document.getElementById('chooseHackathonDialog').style.display='none';
+		$scope.setFindMode('');
+		$scope.setCurrentHackathon('');
+	};
+
 	$scope.setCurrentHackathon = function (hackathon) {
+		document.getElementById('chooseHackathonDialog').style.display='none';
 		$scope.currentHackathon = hackathon;
+		document.title = 'HackaMatch // ' + hackathon;
 		console.log('$scope.currentHackathon: ' + $scope.currentHackathon);
 	};
 
@@ -111,7 +127,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		});
 	};
 
-
-
-
+	$scope.setFindMode = function (mode) {
+		$scope.findMode = mode;
+	};
 });
