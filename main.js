@@ -50,6 +50,21 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	// TODO sync chosenInterests with backend info
 	$scope.chosenInterests = [];
 
+	$scope.$watch(
+		function () {
+			return $scope.findMode;
+		},
+		function (newFindMode, oldFindMode) {
+			if (newFindMode) {
+				document.getElementById('myHeader').style.height = '70vh';
+			}
+			// No findMode selected
+			else {
+				document.getElementById('myHeader').style.height = '100vh';	
+			}
+		}
+	);
+
 	$scope.createGroup = function () {
 		alert('you just created a group!');
 		document.getElementById('createGroupDialog').style.display='none';
