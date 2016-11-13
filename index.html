@@ -169,7 +169,9 @@
     <div ng-repeat="hacker in dummyHackers" class="w3-quarter">
       <h4 class="group-header">{{ hacker.name }}</h4>
         <div class="w3-card-4 w3-padding hacker-card">
-          <img src="{{ hacker.iconUrl }}" class="icon"/>
+          <!-- <span class="add-member-icon" ng-click="alert('you added ' + hacker.name)"> -->
+            <img src="{{ hacker.iconUrl }}" class="icon"/>
+          <!-- </span> -->
           <h5 class="group-subheader">{{ hacker.school }}</h5>
           {{ hacker.major }}
           <h5 class="group-subheader">Skills</h5>

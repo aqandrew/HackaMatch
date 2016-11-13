@@ -307,7 +307,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 			console.log(res);
 			console.log(res.status);
 			if(res.status === 200){
-				document.getElementById('id01').style.display='none';
+				document.getElementById('registerDialog').style.display='none';
 			}
 		});
 	};
