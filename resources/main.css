@@ -36,5 +36,16 @@ body {
 }
 
 .dotted-underline {
-	border-bottom: 2px dashed;
+	border-bottom: 2px dashed rgba(255, 255, 255, 1);
+	-webkit-transition: border-bottom 0.5s ease-in-out;
+    transition: border-bottom 0.5s ease-in-out;
+}
+
+.no-dotted-underline {
+	border-bottom: 2px dashed rgba(255, 255, 255, 0);
+}
+
+#myHeader {
+	-webkit-transition: height 0.3s; /* Safari 3.1 to 6.0 */
+    transition: height 0.3s;
 }

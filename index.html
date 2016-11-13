@@ -17,17 +17,6 @@
 </head>
 <body ng-app="hackathonAidApp" ng-controller="hackathonAidController">
 
-<!-- Side Navigation -->
-<nav class="w3-sidenav w3-white w3-card-2 w3-animate-left" style="display:none" id="mySidenav">
-  <h1 class="w3-xxxlarge w3-text-teal">Side Navigation</h1>
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-xxxlarge w3-text-theme">Close <i class="fa fa-remove"></i></a>
-  <a href="javascript:void(0)">Link 1</a>
-  <a href="javascript:void(0)">Link 2</a>
-  <a href="javascript:void(0)">Link 3</a>
-  <a href="javascript:void(0)">Link 4</a>
-  <a href="javascript:void(0)">Link 5</a>
-</nav>
-
 <!-- Modal dialog for registering -->
 <div id="registerDialog" class="w3-modal">
     <div class="w3-modal-content w3-card-8 w3-animate-top">
@@ -118,35 +107,34 @@
   </div>
 </div>
 
-<div id="main">
-  <!-- Header -->
-  <header class="w3-container w3-theme w3-padding" id="myHeader">
-    <i onclick="w3_open()" id="openNav" class="fa fa-bars w3-xlarge w3-opennav"></i>
-    <div class="w3-center">
-      <img src="resources/HackaMatch logo.png" height="300"/>
-      <h1 class="w3-xxxlarge w3-animate-bottom">HackaMatch</h1>
-      <h2>
-        Match with
-          <span ng-class="{ 'dotted-underline': findMode == 'group' }">groups</span> or
-          <span ng-class="{ 'dotted-underline': findMode == 'members' }">hackers</span> at
-          <span ng-class="{ 'dotted-underline': currentHackathon }">
-            {{ currentHackathon ? currentHackathon + '!' : 'your hackathon!' }}
-          </span>
-      </h2>
-      <div class="w3-padding-32">
-        <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" onclick="document.getElementById('registerDialog').style.display='block'">{{infoLabel}}</button>
-        <button ng-if="!currentHackathon" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" onclick="document.getElementById('chooseHackathonDialog').style.display='block'">Choose a hackathon</button>
+<!-- Header -->
+<header class="w3-container w3-theme w3-padding" id="myHeader" ng-class="{ 'big-header': !findMode, 'small-header': findMode }">
+  <div class="w3-center">
+    <img src="resources/HackaMatch logo.png" height="300"/>
+    <h1 class="w3-xxxlarge w3-animate-bottom">HackaMatch</h1>
+    <h2>
+      Match with
+        <span ng-class="{ 'dotted-underline': findMode == 'group', 'no-dotted-underline': findMode != 'group' }">groups</span> or
+        <span ng-class="{ 'dotted-underline': findMode == 'members', 'no-dotted-underline': findMode != 'members' }">hackers</span> at
+        <span ng-class="{ 'dotted-underline': currentHackathon, 'no-dotted-underline': !currentHackathon }">
+          {{ currentHackathon ? currentHackathon + '!' : 'your hackathon!' }}
+        </span>
+    </h2>
+    <div class="w3-padding-32">
+      <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" onclick="document.getElementById('registerDialog').style.display='block'">{{infoLabel}}</button>
+      <button ng-if="!currentHackathon" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" onclick="document.getElementById('chooseHackathonDialog').style.display='block'">Choose a hackathon</button>
 
-        <div ng-if="currentHackathon" id="group-buttons">
-          <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" onclick="document.getElementById('chooseHackathonDialog').style.display='block'">Choose a different hackathon</button>
-          <button ng-if="!currentGroup" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" onclick="document.getElementById('createGroupDialog').style.display='block'">Create a group</button>
-          <button ng-if="findMode != 'group' && !currentGroup" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" ng-click="setFindMode('group')">Find a group</button>
-        </div> 
-        <button ng-if="findMode != 'members'" ng-click="setFindMode('members')" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button">Find group members</button>
-      </div>
+      <div ng-if="currentHackathon" id="group-buttons">
+        <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" onclick="document.getElementById('chooseHackathonDialog').style.display='block'">Choose a different hackathon</button>
+        <button ng-if="!currentGroup" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" onclick="document.getElementById('createGroupDialog').style.display='block'">Create a group</button>
+        <button ng-if="findMode != 'group' && !currentGroup" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button" ng-click="setFindMode('group')">Find a group</button>
+      </div> 
+      <button ng-if="findMode != 'members'" ng-click="setFindMode('members')" class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey main-button">Find group members</button>
     </div>
-  </header>
+  </div>
+</header>
 
+<div id="main">
   <div class="w3-row-padding w3-center w3-margin-top">
     <div class="w3-third">
       <div class="w3-card-4 w3-padding-top" style="min-height:460px">
