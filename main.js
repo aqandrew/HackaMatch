@@ -20,19 +20,26 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		{
 			name: 'HackHeaven',
 			date: new Date(2016, 11, 29),
-			location: 'Hell, NM'
+			location: 'Heaven, WV',
+			pictureUrl: 'https://s-media-cache-ak0.pinimg.com/736x/62/e8/6c/62e86c167e7075e24399a5f73f689a6d.jpg'
 		},
 		{
 			name: 'HackHell',
-			date: new Date(2017, 1, 1)
+			date: new Date(2017, 1, 1),
+			location: 'Hell, NM',
+			pictureUrl: 'http://vignette1.wikia.nocookie.net/jedipedia/images/0/06/Exogorthen.jpg/revision/latest?cb=20090224172627&path-prefix=de'
 		},
 		{
 			name: 'Hack Your Face Off 2017',
-			date: new Date(2016, 1, 3)
+			date: new Date(2016, 1, 3),
+			location: 'Troy, NY',
+			pictureUrl: 'http://pixel.nymag.com/imgs/daily/vulture/2015/10/09/09-dancing-skeleton.w529.h529.jpg'
 		},
 		{
 			name: 'Hack a Loogie',
-			date: new Date(2016, 1, 15)
+			date: new Date(2016, 1, 15),
+			location: 'Morristown, NJ',
+			pictureUrl: 'http://www.newyork-injurylawyerblog.com/wp-content/uploads/sites/204/2016/03/T0oUM9k2-300x300.jpg'
 		}
 	]; /*function () { // TODO AJAX get present-future hackathons from MLH's website
 		httpRequest = new XMLHttpRequest();
@@ -48,6 +55,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.currentGroup = '';
 	$scope.dummyHackers = [
 		{
+			'id': 5,
 			'name': 'a dog',
 			'iconUrl': 'https://pbs.twimg.com/profile_images/671724177934696448/joRkM3fP.jpg',
 			'school': 'Harvard University',
@@ -61,6 +69,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 			]
 		},
 		{
+			'id': 6,
 			'name': 'Spongebob Squarepants',
 			'iconUrl': 'https://pbs.twimg.com/profile_images/549306202245824512/tH0FYilQ.jpeg',
 			'school': "Mrs. Puff's Boating School",
@@ -76,6 +85,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 			]
 		},
 		{
+			'id': 7,
 			'name': 'Albert Lo',
 			'iconUrl': 'resources/lestWeForget.png',
 			'school': 'Harvard University',
@@ -84,6 +94,26 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 			'skills': 'medicine, law, tomfoolery, JavaScript',
 			'experience': 1,
 			'interests': $scope.allInterests
+		}
+	];
+	$scope.hackerGroups = [
+		{
+			id: 0,
+			name: 'Team Spongedog',
+			members: [5, 6],
+			description: 'bark bark I am a happy sponge'
+		},
+		{
+			id: 1,
+			name: 'Dogbert',
+			members: [5, 7],
+			description: 'we are unstoppable'
+		},
+		{
+			id: 2,
+			name: 'Everyone',
+			members: [5, 6, 7],
+			description: 'hivemind'
 		}
 	];
 
