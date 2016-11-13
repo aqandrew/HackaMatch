@@ -19,7 +19,8 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.upcomingHackathons = [
 		{
 			name: 'HackHeaven',
-			date: new Date(2016, 11, 29)
+			date: new Date(2016, 11, 29),
+			location: 'Hell, NM'
 		},
 		{
 			name: 'HackHell',
