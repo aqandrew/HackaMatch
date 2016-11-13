@@ -40,11 +40,11 @@
           <div class="g-signin2" data-onsuccess="onSignIn"></div>
           <h3 ng-if="true">Hi, {{hackerName}}!</h3>
           <div class="w3-group">
-            <input class="w3-input" type="text" required>
+            <input class="w3-input" type="text" ng-model="school" required>
             <label class="w3-label">School</label>
           </div>
           <div class="w3-group">
-            <input class="w3-input" type="text">
+            <input class="w3-input" type="text" ng-model="major">
             <label class="w3-label">Major</label>
           </div>
           <div class="w3-dropdown-hover">
@@ -53,9 +53,12 @@
               <i class="fa fa-caret-down"></i>
             </button>
             <div class="w3-dropdown-content w3-border">
-              <a href="#">0: Novice</a>
-              <a href="#">1-5: Veteran</a>
-              <a href="#">5+: Expert</a>
+              <a href="#" ng-click="experienceClicked(0)">0: Novice</a>
+              <a href="#" ng-click="experienceClicked(1)">1-5: Veteran</a>
+              <a href="#" ng-click="experienceClicked(2)">5+: Expert</a>
+            </div>
+            <div>
+              {{experience}} events
             </div>
           </div>
           <div class="w3-group">
@@ -69,7 +72,7 @@
             <label class="w3-label">Interests</label>
           </div>
           <div class="w3-group">
-            <textarea class="w3-input" style="resize:none"></textarea>
+            <textarea class="w3-input" style="resize:none" ng-model="progLanguage"></textarea>
             <label class="w3-label">Skills/Programming Languages Known, Separated by Commas</label>
           </div>
           <div class="w3-group">
