@@ -30,29 +30,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 
 	$scope.wipeInfo();
 	window.onSignIn = onSignIn;
-// <<<<<<< HEAD
-// 	$scope.isSignedIn = false;
-// 	$scope.hackerName;
-// 	$scope.school;
-// 	$scope.hackerEmail;
-// 	$scope.hackerPicture;
-// 	$scope.major;
-// 	$scope.experience = 0;
-// 	$scope.progLanguage;
-// 	$scope.userGroupName;
-// 	$scope.userGroupID;
-// 	$scope.groupSlackID;
-// 	$scope.groupGitHub;
-// 	$scope.infoLabel = 'Register';
-// 	$scope.userId;
 
-// 	//Group variables
-// 	$scope.userGroupNameCreation;
-// 	$scope.userGroupDescription;
-
-
-// =======
-// >>>>>>> origin/master
 	$scope.upcomingHackathons = [
 		{
 			name: 'HackHeaven',
@@ -200,7 +178,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.makeGroup = function() {
 		var req = {
 			method: 'POST',
-			url: 'http://localhost:8080/api/users/newGroup',
+			url: 'https://hackahtonaid.appspot.com/api/users/newGroup',
 			data : {
 				location: $scope.currentHackathon,
 				name: $scope.userGroupName,
@@ -250,7 +228,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    };
 	    $http(req).then(function returnData(res){
 	    	console.log(res);
-    		$scope.userGroupName = res.data[0].name;
+    		$scope.userGroupName = res.data[0].groupName;
 			$scope.userGroupID = res.data[0].groupID;
 	    	$scope.school = res.data[0].school;
 	    	$scope.major = res.data[0].major;
@@ -259,7 +237,6 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    	$scope.progLanguage = res.data[0].progLanguages;
 	    	$scope.groupSlackID = res.data[0].slackID;
 	    	$scope.groupGitHub = res.data[0].ghSite;
-	    	$scope.groupName = res.data[0].name;
 	    	$scope.userGroupDescription = res.data[0].description;
 	    	$scope.userId = res.data[0].ID;
 	    });
