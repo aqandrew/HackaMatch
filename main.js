@@ -11,6 +11,10 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.major;
 	$scope.experience = 0;
 	$scope.progLanguage;
+	$scope.userGroupName;
+	$scope.userGroupID;
+	$scope.groupSlackID;
+	$scope.groupGitHub;
 	$scope.infoLabel = 'Register';
 	$scope.upcomingHackathons = [
 		'HackHeaven',
@@ -75,7 +79,30 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 
 	    $scope.hackerName = profile.getGivenName();
 	    $scope.infoLabel = 'My info';
+
+	    var req = {
+	    	method: 'POST',
+	    	url: 'https://hackahtonaid.appspot.com/api/users/getUserLogInInfo',
+	    	data: {
+	    		email: $scope.hackerEmail
+	    	}
+	    };
+	    $http(req).then(function returnData(res){
+	    	console.log(res.data[0]);
+    		$scope.userGroupName = res.data[0].name;
+			$scope.userGroupID = res.data[0].groupID;
+	    	$scope.school = res.data[0].school;
+	    	$scope.major = res.data[0].major;
+	    	$scope.experience = res.data[0].experience;
+	    	$scope.chosenInterests = res.data[0].interests.split(',');
+	    	$scope.progLanguage = res.data[0].progLanguage;
+	    	$scope.groupSlackID = res.data[0].slackID;
+	    	$scope.groupGitHub = res.data[0].ghSite;
+	    });
+
 	    $scope.$digest();
+
+
 	}
 
 	$scope.isChosen = function (interest) {
@@ -109,7 +136,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 
 		var req = {
 			method: 'POST',
-			url: 'http://localhost:8080/api/users/new',
+			url: 'https://hackahtonaid.appspot.com/api/users/new',
 			data:{
 				email: $scope.hackerEmail,
 				school: $scope.school,
