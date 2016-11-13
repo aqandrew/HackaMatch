@@ -48,6 +48,7 @@ body {
 #myHeader {
 	-webkit-transition: height 0.3s; /* Safari 3.1 to 6.0 */
     transition: height 0.3s;
+    position: relative;
 }
 
 .loader {
@@ -65,7 +66,7 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-#header-signin {
+.log-button {
 	position: absolute;
 }
 

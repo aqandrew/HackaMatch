@@ -3,20 +3,30 @@
 var hackaMatch = angular.module('hackathonAidApp', []);
 
 hackaMatch.controller('hackathonAidController', function ($scope, $http) {
+	$scope.wipeInfo = function () {
+		$scope.isSignedIn = false;
+		$scope.hackerName = '';
+		$scope.school = '';
+		$scope.hackerEmail = '';
+		$scope.hackerPicture = '';
+		$scope.major = '';
+		$scope.experience = 0;
+		$scope.progLanguage = [];
+		$scope.userGroupName = '';
+		$scope.userGroupID = '';
+		$scope.groupSlackID = '';
+		$scope.groupGitHub = '';
+		$scope.infoLabel = 'Register';
+		$scope.currentHackathon = '';
+		$scope.findMode = '';
+		$scope.currentGroup = '';
+
+		// TODO sync chosenInterests with backend info
+		$scope.chosenInterests = [];
+	};
+
+	$scope.wipeInfo();
 	window.onSignIn = onSignIn;
-	$scope.isSignedIn = false;
-	$scope.hackerName;
-	$scope.school;
-	$scope.hackerEmail;
-	$scope.hackerPicture;
-	$scope.major;
-	$scope.experience = 0;
-	$scope.progLanguage;
-	$scope.userGroupName;
-	$scope.userGroupID;
-	$scope.groupSlackID;
-	$scope.groupGitHub;
-	$scope.infoLabel = 'Register';
 	$scope.upcomingHackathons = [
 		{
 			name: 'HackHeaven',
@@ -51,9 +61,6 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		// TODO make the list year-agnostic
 		httpRequest.open('GET', 'https://mlh.io/seasons/na-2017/events', true);
 	};*/
-	$scope.currentHackathon = '';
-	$scope.findMode = '';
-	$scope.currentGroup = '';
 	$scope.dummyHackers = [
 		{
 			'id': 5,
@@ -142,9 +149,6 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		'Business'
 	];
 
-	// TODO sync chosenInterests with backend info
-	$scope.chosenInterests = [];
-
 	$scope.$watch(
 		function () {
 			return $scope.findMode;
@@ -212,6 +216,16 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 
 	    $scope.isSignedIn = true;
 	    $scope.$digest();
+	}
+
+	$scope.signOut = function () {
+		var auth2 = gapi.auth2.getAuthInstance();
+	    auth2.signOut().then(function () {
+			$scope.wipeInfo();
+			$scope.isSignedIn = false;
+			$scope.$digest();
+			console.log('User signed out.');
+	    });
 	}
 
 	$scope.isChosen = function (interest) {
