@@ -12,6 +12,7 @@ body {
 
 .interest-button {
 	margin: 2px;
+	box-shadow: 0px 1px 5px gray;
 }
 
 .interest-active {
@@ -20,4 +21,8 @@ body {
 
 .interest-inactive {
 	background-color: #AABEE8;
+}
+
+.mh-green {
+	background-color: #8CC63E;
 }

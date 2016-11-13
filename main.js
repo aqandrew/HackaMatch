@@ -1,19 +1,10 @@
-function onSignIn(googleUser) {
-	var profile = googleUser.getBasicProfile();
-
-    console.log('Full Name: ' + profile.getName());
-    console.log('Given Name: ' + profile.getGivenName());
-    console.log('Family Name: ' + profile.getFamilyName());
-    console.log("Image URL: " + profile.getImageUrl());
-    console.log("Email: " + profile.getEmail());
-};
-
 // AngularJS stuff
 
 var hackaMatch = angular.module('hackathonAidApp', []);
 
 hackaMatch.controller('hackathonAidController', function ($scope) {
-	$scope.hackerName = 'bruh';
+	window.onSignIn = onSignIn;
+	$scope.hackerName;
 
 	$scope.allInterests = [
 		'Data Science',
@@ -30,6 +21,19 @@ hackaMatch.controller('hackathonAidController', function ($scope) {
 
 	// TODO sync chosenInterests with backend info
 	$scope.chosenInterests = [];
+
+	function onSignIn (googleUser) {
+		var profile = googleUser.getBasicProfile();
+
+	    console.log('Full Name: ' + profile.getName());
+	    //console.log('Given Name: ' + profile.getGivenName());
+	    console.log('Family Name: ' + profile.getFamilyName());
+	    console.log("Image URL: " + profile.getImageUrl());
+	    console.log("Email: " + profile.getEmail());
+
+	    $scope.hackerName = profile.getGivenName();
+	    $scope.$digest();
+	};
 
 	$scope.isChosen = function (interest) {
 		return $scope.chosenInterests.includes(interest);
