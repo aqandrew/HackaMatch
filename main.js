@@ -17,10 +17,22 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.groupGitHub;
 	$scope.infoLabel = 'Register';
 	$scope.upcomingHackathons = [
-		'HackHeaven',
-		'HackHell',
-		'Hack Your Face Off 2012',
-		'Hack a Loogie'
+		{
+			name: 'HackHeaven',
+			date: new Date(2016, 11, 29)
+		},
+		{
+			name: 'HackHell',
+			date: new Date(2017, 1, 1)
+		},
+		{
+			name: 'Hack Your Face Off 2017',
+			date: new Date(2016, 1, 3)
+		},
+		{
+			name: 'Hack a Loogie',
+			date: new Date(2016, 1, 15)
+		}
 	]; /*function () { // TODO AJAX get present-future hackathons from MLH's website
 		httpRequest = new XMLHttpRequest();
 		httpRequest.onreadystatechange = function () {
@@ -33,6 +45,46 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.currentHackathon = '';
 	$scope.findMode = '';
 	$scope.currentGroup = '';
+	$scope.dummyHackers = [
+		{
+			'name': 'a dog',
+			'iconUrl': 'https://pbs.twimg.com/profile_images/671724177934696448/joRkM3fP.jpg',
+			'school': 'Harvard University',
+			'major': 'Computer Science',
+			'github': 'doge666',
+			'skills': 'LISP, Python, C#, Database Design, Fetch',
+			'experience': 0,
+			'interests': [
+				'Hardware',
+				'Video Games/Virtual Reality'
+			]
+		},
+		{
+			'name': 'Spongebob Squarepants',
+			'iconUrl': 'https://pbs.twimg.com/profile_images/549306202245824512/tH0FYilQ.jpeg',
+			'school': "Mrs. Puff's Boating School",
+			'major': 'Fry Cookery',
+			'github': 'spengbab',
+			'skills': 'fine dining, breathing, JavaScript',
+			'experience': 2,
+			'interests': [
+				'Full-Stack Development',
+				'Video Games/Virtual Reality',
+				'Mobile Development',
+				'Graphic Design'
+			]
+		},
+		{
+			'name': 'Albert Lo',
+			'iconUrl': 'resources/lestWeForget.png',
+			'school': 'Harvard University',
+			'major': 'Computer Science',
+			'github': 'alo2',
+			'skills': 'medicine, law, tomfoolery, JavaScript',
+			'experience': 1,
+			'interests': $scope.allInterests
+		}
+	];
 
 	$scope.allInterests = [
 		'Data Science',
@@ -80,7 +132,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.setCurrentHackathon = function (hackathon) {
 		document.getElementById('chooseHackathonDialog').style.display='none';
 		$scope.currentHackathon = hackathon;
-		document.title = 'HackaMatch // ' + hackathon;
+		document.title = 'HackaMatch // ' + hackathon.name;
 		console.log('$scope.currentHackathon: ' + $scope.currentHackathon);
 	};
 
@@ -103,14 +155,14 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    	}
 	    };
 	    $http(req).then(function returnData(res){
-	    	console.log(res.data[0]);
+	    	console.log(res);
     		$scope.userGroupName = res.data[0].name;
 			$scope.userGroupID = res.data[0].groupID;
 	    	$scope.school = res.data[0].school;
 	    	$scope.major = res.data[0].major;
 	    	$scope.experience = res.data[0].experience;
 	    	$scope.chosenInterests = res.data[0].interests.split(',');
-	    	$scope.progLanguage = res.data[0].progLanguage;
+	    	$scope.progLanguage = res.data[0].progLanguages;
 	    	$scope.groupSlackID = res.data[0].slackID;
 	    	$scope.groupGitHub = res.data[0].ghSite;
 	    });
