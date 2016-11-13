@@ -54,29 +54,46 @@
         <h4>User Information</h4>
       </header>
       <div ng-app="hackathonAidApp" ng-controller="hackathonAidController" class="w3-padding">
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <div class="w3-group">
-          <input class="w3-input" type="text" required>
-          <label class="w3-label">School</label>
-        </div>
-        <div class="w3-group">
-          <input class="w3-input" type="text" required>
-          <label class="w3-label">Major</label>
-        </div>
-        Hackathon experience
-        <div class="w3-group">
-          <textarea class="w3-input" type="text">yo</textarea>
-          <label class="w3-label">Interests</label>
-        </div>
-        <div class="w3-group">
-          <textarea class="w3-input" type="text">hello</textarea>
-          <label class="w3-label">Skills/Programming Languages Known</label>
-        </div>
-        <h1>{{test}}</h1>
+        <form ng-submit="submitForm()">
+          <div class="g-signin2" data-onsuccess="onSignIn"></div>
+          <h3 ng-if="true">Hi, {{hackerName}}!</h3>
+          <div class="w3-group">
+            <input class="w3-input" type="text" required>
+            <label class="w3-label">School</label>
+          </div>
+          <div class="w3-group">
+            <input class="w3-input" type="text" required>
+            <label class="w3-label">Major</label>
+          </div>
+          <div class="w3-dropdown-hover">
+            <button class="w3-btn w3-red">Hackathon Experience</button>
+            <div class="w3-dropdown-content w3-border">
+              <a href="#">Novice (0)</a>
+              <a href="#">Veteran (1-5)</a>
+              <a href="#">Expert (5+)</a>
+            </div>
+          </div>
+          <div class="w3-group">
+            <ul class="interest-list">
+              <li ng-repeat="interest in allInterests">
+                <button class="w3-btn w3-round-xxlarge interest-button" ng-class="{'interest-active': isActive(interest), 'interest-inactive': !isActive(interest)}" ng-click="interestClicked(interest)" id="{{kebabify(interest)}}-button">
+                  {{interest}}
+                </button>
+              </li>
+            </ul>
+            <label class="w3-label">Interests</label>
+          </div>
+          <div class="w3-group">
+            <textarea class="w3-input" type="text"></textarea>
+            <label class="w3-label">Skills/Programming Languages Known</label>
+          </div>
+          <div class="w3-group">
+            <textarea class="w3-input" style="resize:none"></textarea>
+            <label class="w3-label">Comments (Optional)</label>
+          </div>
+          <button type="submit" class="w3-btn w3-indigo w3-large">Submit</button>
+        </form>
       </div>
-      <!-- <footer class="w3-container w3-theme-l1">
-        <p>Modal footer</p>
-      </footer> -->
     </div>
 </div>
 
@@ -276,7 +293,6 @@
 
 <div class="w3-third">
 <div class="w3-card-2">
-  <img src="/w3images/car.jpg" alt="Car" style="width:100%">
   <div class="w3-container">
   <p>w3-card-2</p>
   </div>
@@ -285,7 +301,6 @@
 
 <div class="w3-third">
 <div class="w3-card-4">
-  <img src="/w3images/car.jpg" alt="Car" style="width:100%">
   <div class="w3-container">
   <p>w3-card-4</p>
   </div>
@@ -294,7 +309,6 @@
 
 <div class="w3-third">
 <div class="w3-card-8">
-  <img src="/w3images/car.jpg" alt="Car" style="width:100%">
   <div class="w3-container">
   <p>w3-card-8</p>
   </div>
@@ -420,18 +434,6 @@ class creates progress bars:</p>
 </div>
 <hr>
 
-<h2 class="w3-center">Slideshows</h2>
-<div class="w3-content" style="max-width:800px;position:relative">
-
-<img class="mySlides w3-animate-opacity" src="/w3images/fjords.jpg" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="/w3images/lights.jpg" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="/w3images/mountains.jpg" style="width:100%">
-<img class="mySlides w3-animate-opacity" src="/w3images/forest.jpg" style="width:100%">
-
-<a class="w3-btn-floating w3-hover-dark-grey" style="position:absolute;top:45%;left:0;" onclick="plusDivs(-1)">❮</a>
-<a class="w3-btn-floating w3-hover-dark-grey" style="position:absolute;top:45%;right:0;" onclick="plusDivs(+1)">❯</a>
-</div>
-
 <div class="w3-container">
 <hr>
 <h2 class="w3-center">Navigation</h2>
@@ -450,33 +452,6 @@ class creates progress bars:</p>
   </li>
   <li class="w3-right"><a class="w3-padding-16" href="javascript:void(0)"><i class="fa fa-search"></i></a></li>
 </ul>
-
-<hr>
-<h2 class="w3-center">Accordions</h2>
-<div class="w3-container">
-<div class="w3-accordion">
-  <button onclick="myAccFunc('Demo1')" class="w3-padding-16 w3-hover-dark-grey w3-btn-block w3-left-align">Open Section 1</button>
-  <div id="Demo1" class="w3-accordion-content">
-    <div class="w3-container">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    </div>
-  </div>
-  <button onclick="myAccFunc('Demo2')" class="w3-padding-16 w3-hover-dark-grey w3-btn-block w3-left-align">Open Section 2</button>
-  <div id="Demo2" class="w3-accordion-content">
-    <a class="w3-text-black w3-padding-16" href="javascript:void(0)">Link 1</a>
-    <a class="w3-text-black w3-padding-16" href="javascript:void(0)">Link 2</a>
-    <a class="w3-text-black w3-padding-16" href="javascript:void(0)">Link 3</a>
-  </div>
-  <button onclick="myAccFunc('Demo3')" class="w3-padding-16 w3-hover-dark-grey w3-btn-block w3-left-align">Open Section 3</button>
-  <div id="Demo3" class="w3-accordion-content w3-border">
-    <div class="w3-container">
-      <p>Accordion with Images:</p>
-      <img src="/w3images/fjords.jpg" style="width:30%;" class="w3-animate-zoom">
-      <p>Trolltunga, Norway</p>
-    </div>
-  </div>
-</div>
-</div>
 
 <hr>
 <h2 class="w3-center">Tabs</h2>
