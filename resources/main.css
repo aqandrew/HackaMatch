@@ -64,3 +64,39 @@ body {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+#header-signin {
+	position: absolute;
+}
+
+.github-icon {
+	background: url('GitHub-Mark-64px.png');
+    background-size: 32px 32px;
+    height: 32px;
+    width: 32px;
+    margin: 0px auto;
+}
+
+#github-link {
+	text-decoration: none;
+	float: right;
+	color: #000;
+}
+
+.icon {
+	width: 100%;
+	height: auto;
+}
+
+.card-interest {
+	padding: 0;
+}
+
+.card-interest li {
+	list-style-type: none;
+}
+
+.hackathon-button {
+	box-shadow: 0px 2px 10px #222;
+	margin: 2px;
+}

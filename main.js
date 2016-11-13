@@ -4,6 +4,7 @@ var hackaMatch = angular.module('hackathonAidApp', []);
 
 hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	window.onSignIn = onSignIn;
+	$scope.isSignedIn = false;
 	$scope.hackerName;
 	$scope.school;
 	$scope.hackerEmail;
@@ -15,13 +16,39 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.userGroupID;
 	$scope.groupSlackID;
 	$scope.groupGitHub;
-	$scope.groupDescription;
 	$scope.infoLabel = 'Register';
+	$scope.userId;
+
+	//Group variables
+	$scope.userGroupNameCreation;
+	$scope.userGroupDescription;
+
+
 	$scope.upcomingHackathons = [
-		'HackHeaven',
-		'HackHell',
-		'Hack Your Face Off 2012',
-		'Hack a Loogie'
+		{
+			name: 'HackHeaven',
+			date: new Date(2016, 11, 29),
+			location: 'Heaven, WV',
+			pictureUrl: 'https://s-media-cache-ak0.pinimg.com/736x/62/e8/6c/62e86c167e7075e24399a5f73f689a6d.jpg'
+		},
+		{
+			name: 'HackHell',
+			date: new Date(2017, 1, 1),
+			location: 'Hell, NM',
+			pictureUrl: 'http://vignette1.wikia.nocookie.net/jedipedia/images/0/06/Exogorthen.jpg/revision/latest?cb=20090224172627&path-prefix=de'
+		},
+		{
+			name: 'Hack Your Face Off 2017',
+			date: new Date(2016, 1, 3),
+			location: 'Troy, NY',
+			pictureUrl: 'http://pixel.nymag.com/imgs/daily/vulture/2015/10/09/09-dancing-skeleton.w529.h529.jpg'
+		},
+		{
+			name: 'Hack a Loogie',
+			date: new Date(2016, 1, 15),
+			location: 'Morristown, NJ',
+			pictureUrl: 'http://www.newyork-injurylawyerblog.com/wp-content/uploads/sites/204/2016/03/T0oUM9k2-300x300.jpg'
+		}
 	]; /*function () { // TODO AJAX get present-future hackathons from MLH's website
 		httpRequest = new XMLHttpRequest();
 		httpRequest.onreadystatechange = function () {
@@ -34,6 +61,80 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.currentHackathon = '';
 	$scope.findMode = '';
 	$scope.currentGroup = '';
+	$scope.dummyHackers = [
+		{
+			'id': 5,
+			'name': 'a dog',
+			'iconUrl': 'https://pbs.twimg.com/profile_images/671724177934696448/joRkM3fP.jpg',
+			'school': 'Harvard University',
+			'major': 'Computer Science',
+			'github': 'doge666',
+			'skills': 'LISP, Python, C#, Database Design, Fetch',
+			'experience': 0,
+			'interests': [
+				'Hardware',
+				'Video Games/Virtual Reality'
+			]
+		},
+		{
+			'id': 7,
+			'name': 'Albert Lo',
+			'iconUrl': 'resources/lestWeForget.png',
+			'school': 'Harvard University',
+			'major': 'Computer Science',
+			'github': 'alo2',
+			'skills': 'medicine, law, tomfoolery, JavaScript',
+			'experience': 1,
+			'interests': [
+				'Data Science',
+				'Frontend Development',
+				'Backend Development',
+				'Full-Stack Development',
+				'Mobile Development',
+				'Artificial Intelligence',
+				'Hardware',
+				'Video Games/Virtual Reality',
+				'Graphic Design',
+				'Business'
+			]
+		},
+		{
+			'id': 6,
+			'name': 'Spongebob Squarepants',
+			'iconUrl': 'https://pbs.twimg.com/profile_images/549306202245824512/tH0FYilQ.jpeg',
+			'school': "Mrs. Puff's Boating School",
+			'major': 'Fry Cookery',
+			'github': 'spengbab',
+			'skills': 'fine dining, breathing, JavaScript',
+			'experience': 2,
+			'interests': [
+				'Full-Stack Development',
+				'Video Games/Virtual Reality',
+				'Mobile Development',
+				'Graphic Design'
+			]
+		}
+	];
+	$scope.hackerGroups = [
+		{
+			id: 0,
+			name: 'Team Spongedog',
+			members: [5, 6],
+			description: 'bark bark I am a happy sponge'
+		},
+		{
+			id: 1,
+			name: 'Dogbert',
+			members: [5, 7],
+			description: 'we are unstoppable'
+		},
+		{
+			id: 2,
+			name: 'Everyone',
+			members: [5, 6, 7],
+			description: 'hivemind'
+		}
+	];
 
 	$scope.allInterests = [
 		'Data Science',
@@ -69,7 +170,28 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.createGroup = function () {
 		alert('you just created a group!');
 		document.getElementById('createGroupDialog').style.display='none';
+
 		$scopee.setFindMode('member');
+	};
+
+	$scope.makeGroup = function() {
+		var req = {
+			method: 'POST',
+			url: 'http://localhost:8080/api/users/newGroup',
+			data : {
+				location: $scope.currentHackathon,
+				name: $scope.userGroupName,
+				gitHub: $scope.groupGitHub,
+				slack: $scope.groupSlackID,
+				description: $scope.userGroupDescription,
+				userId: $scope.userId
+			}
+		};
+
+		$http(req).then(function returnData(res){
+			document.getElementById('createGroupDialog').style.display='none';
+			$scope.setFindMode('member');
+		});
 	};
 
 	$scope.clearButtonMode = function () {
@@ -81,7 +203,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.setCurrentHackathon = function (hackathon) {
 		document.getElementById('chooseHackathonDialog').style.display='none';
 		$scope.currentHackathon = hackathon;
-		document.title = 'HackaMatch // ' + hackathon;
+		document.title = 'HackaMatch // ' + hackathon.name;
 		console.log('$scope.currentHackathon: ' + $scope.currentHackathon);
 	};
 
@@ -105,22 +227,22 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    };
 	    $http(req).then(function returnData(res){
 	    	console.log(res);
-	    	console.log(res.data[0]);
     		$scope.userGroupName = res.data[0].name;
 			$scope.userGroupID = res.data[0].groupID;
 	    	$scope.school = res.data[0].school;
 	    	$scope.major = res.data[0].major;
 	    	$scope.experience = res.data[0].experience;
 	    	$scope.chosenInterests = res.data[0].interests.split(',');
-	    	$scope.progLanguage = res.data[0].progLanguage;
+	    	$scope.progLanguage = res.data[0].progLanguages;
 	    	$scope.groupSlackID = res.data[0].slackID;
 	    	$scope.groupGitHub = res.data[0].ghSite;
-	    	$scope.groupDescription = res.data[0].description;
+	    	$scope.groupName = res.data[0].name;
+	    	$scope.userGroupDescription = res.data[0].description;
+	    	$scope.userId = res.data[0].ID;
 	    });
 
+	    $scope.isSignedIn = true;
 	    $scope.$digest();
-
-
 	}
 
 	$scope.isChosen = function (interest) {
