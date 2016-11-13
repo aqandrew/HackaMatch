@@ -165,10 +165,10 @@
 </div>
 
 <div id="main">
-  <div ng-show="findMode == 'members'" class="w3-row-padding w3-center">
-    <div ng-repeat="hacker in dummyHackers" class="w3-quarter hacker-card">
+  <div ng-show="findMode == 'members'" class="w3-row-padding w3-center w3-padding-16">
+    <div ng-repeat="hacker in dummyHackers" class="w3-quarter">
       <h4 class="group-header">{{ hacker.name }}</h4>
-        <div class="w3-card-4 w3-padding">
+        <div class="w3-card-4 w3-padding hacker-card">
           <img src="{{ hacker.iconUrl }}" class="icon"/>
           <h5 class="group-subheader">{{ hacker.school }}</h5>
           {{ hacker.major }}
