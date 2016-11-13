@@ -65,60 +65,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		// TODO make the list year-agnostic
 		httpRequest.open('GET', 'https://mlh.io/seasons/na-2017/events', true);
 	};*/
-	$scope.dummyHackers = [
-		{
-			'id': 5,
-			'name': 'a dog',
-			'iconUrl': 'https://pbs.twimg.com/profile_images/671724177934696448/joRkM3fP.jpg',
-			'school': 'Harvard University',
-			'major': 'Computer Science',
-			'github': 'doge666',
-			'skills': 'LISP, Python, C#, Database Design, Fetch',
-			'experience': 0,
-			'interests': [
-				'Hardware',
-				'Video Games/Virtual Reality'
-			]
-		},
-		{
-			'id': 7,
-			'name': 'Albert Lo',
-			'iconUrl': 'resources/lestWeForget.png',
-			'school': 'Harvard University',
-			'major': 'Computer Science',
-			'github': 'alo2',
-			'skills': 'medicine, law, tomfoolery, JavaScript',
-			'experience': 1,
-			'interests': [
-				'Data Science',
-				'Frontend Development',
-				'Backend Development',
-				'Full-Stack Development',
-				'Mobile Development',
-				'Artificial Intelligence',
-				'Hardware',
-				'Video Games/Virtual Reality',
-				'Graphic Design',
-				'Business'
-			]
-		},
-		{
-			'id': 6,
-			'name': 'Spongebob Squarepants',
-			'iconUrl': 'https://pbs.twimg.com/profile_images/549306202245824512/tH0FYilQ.jpeg',
-			'school': "Mrs. Puff's Boating School",
-			'major': 'Fry Cookery',
-			'github': 'spengbab',
-			'skills': 'fine dining, breathing, JavaScript',
-			'experience': 2,
-			'interests': [
-				'Full-Stack Development',
-				'Video Games/Virtual Reality',
-				'Mobile Development',
-				'Graphic Design'
-			]
-		}
-	];
+
 	$scope.hackerGroups = [
 		{
 			id: 0,
@@ -312,7 +259,90 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		});
 	};
 
+	$scope.dummyHackers = [];
+
 	$scope.setFindMode = function (mode) {
-		$scope.findMode = mode;
+		if(mode === 'members'){
+			//get data for users from backend
+			var req = {
+				method: 'GET',
+				url: 'https://hackahtonaid.appspot.com/api/users/'
+			};
+
+			$http(req).then(function returnData(res){
+				for(var i = 0; i < res.data.items.length; i++){
+					console.log(res.data.items[i]);
+					var temp = res.data.items[i];
+					 $scope.dummyHackers.push({
+					 	'id': temp.ID,
+					 	'name': temp.name,
+					 	'iconUrl' : temp.pictureURL,
+					 	'major' : temp.major,
+					 	'github' : temp.userGitHub,
+					 	'skills' : temp.progLanguages,
+					 	'experience' : temp.experience,
+					 	'interests' : [
+					 		'None']
+					 });
+				};
+
+				$scope.findMode = mode;
+			});
+		}
 	};
+
+	// 	$scope.dummyHackers = [
+	// 	{
+	// 		'id': 5,
+	// 		'name': 'a dog',
+	// 		'iconUrl': 'https://pbs.twimg.com/profile_images/671724177934696448/joRkM3fP.jpg',
+	// 		'school': 'Harvard University',
+	// 		'major': 'Computer Science',
+	// 		'github': 'doge666',
+	// 		'skills': 'LISP, Python, C#, Database Design, Fetch',
+	// 		'experience': 0,
+	// 		'interests': [
+	// 			'Hardware',
+	// 			'Video Games/Virtual Reality'
+	// 		]
+	// 	},
+	// 	{
+	// 		'id': 7,
+	// 		'name': 'Albert Lo',
+	// 		'iconUrl': 'resources/lestWeForget.png',
+	// 		'school': 'Harvard University',
+	// 		'major': 'Computer Science',
+	// 		'github': 'alo2',
+	// 		'skills': 'medicine, law, tomfoolery, JavaScript',
+	// 		'experience': 1,
+	// 		'interests': [
+	// 			'Data Science',
+	// 			'Frontend Development',
+	// 			'Backend Development',
+	// 			'Full-Stack Development',
+	// 			'Mobile Development',
+	// 			'Artificial Intelligence',
+	// 			'Hardware',
+	// 			'Video Games/Virtual Reality',
+	// 			'Graphic Design',
+	// 			'Business'
+	// 		]
+	// 	},
+	// 	{
+	// 		'id': 6,
+	// 		'name': 'Spongebob Squarepants',
+	// 		'iconUrl': 'https://pbs.twimg.com/profile_images/549306202245824512/tH0FYilQ.jpeg',
+	// 		'school': "Mrs. Puff's Boating School",
+	// 		'major': 'Fry Cookery',
+	// 		'github': 'spengbab',
+	// 		'skills': 'fine dining, breathing, JavaScript',
+	// 		'experience': 2,
+	// 		'interests': [
+	// 			'Full-Stack Development',
+	// 			'Video Games/Virtual Reality',
+	// 			'Mobile Development',
+	// 			'Graphic Design'
+	// 		]
+	// 	}
+	// ];
 });
