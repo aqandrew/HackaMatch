@@ -36,25 +36,29 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 			name: 'HackHeaven',
 			date: new Date(2016, 11, 29),
 			location: 'Heaven, WV',
-			pictureUrl: 'https://s-media-cache-ak0.pinimg.com/736x/62/e8/6c/62e86c167e7075e24399a5f73f689a6d.jpg'
+			pictureUrl: 'https://s-media-cache-ak0.pinimg.com/736x/62/e8/6c/62e86c167e7075e24399a5f73f689a6d.jpg',
+			description: 'Prizes include pearly gates and a lyre. No halos included.'
 		},
 		{
 			name: 'HackHell',
 			date: new Date(2017, 1, 1),
 			location: 'Hell, NM',
-			pictureUrl: 'http://vignette1.wikia.nocookie.net/jedipedia/images/0/06/Exogorthen.jpg/revision/latest?cb=20090224172627&path-prefix=de'
+			pictureUrl: 'http://vignette1.wikia.nocookie.net/jedipedia/images/0/06/Exogorthen.jpg/revision/latest?cb=20090224172627&path-prefix=de',
+			description: 'There\'s probably somewhere in New Mexico called Hell, right?'
 		},
 		{
 			name: 'Hack Your Face Off 2017',
 			date: new Date(2016, 1, 3),
 			location: 'Troy, NY',
-			pictureUrl: 'http://pixel.nymag.com/imgs/daily/vulture/2015/10/09/09-dancing-skeleton.w529.h529.jpg'
+			pictureUrl: 'http://pixel.nymag.com/imgs/daily/vulture/2015/10/09/09-dancing-skeleton.w529.h529.jpg',
+			description: 'Your face might shear, poof, or melt off. Stay tuned.'
 		},
 		{
 			name: 'Hack a Loogie',
 			date: new Date(2016, 1, 15),
 			location: 'Morristown, NJ',
-			pictureUrl: 'http://www.newyork-injurylawyerblog.com/wp-content/uploads/sites/204/2016/03/T0oUM9k2-300x300.jpg'
+			pictureUrl: 'http://www.newyork-injurylawyerblog.com/wp-content/uploads/sites/204/2016/03/T0oUM9k2-300x300.jpg',
+			description: 'Welcome to the Salty Spitoon. How tough are ya?'
 		}
 	]; /*function () { // TODO AJAX get present-future hackathons from MLH's website
 		httpRequest = new XMLHttpRequest();

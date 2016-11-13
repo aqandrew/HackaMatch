@@ -162,6 +162,7 @@ body, h2, h3, h4, h5, h6 {
 .hackathon-button {
 	box-shadow: 0px 2px 10px #222;
 	margin: 2px;
+	text-align: center;
 }
 
 .group-card {
@@ -187,4 +188,24 @@ body, h2, h3, h4, h5, h6 {
 	top: 50%;
 	width: 100%;
 	transform: translateY(-50%);
+}
+
+#hackathon-modal-title {
+	float: left;
+}
+
+#clear-hackathon-button {
+	float: left;
+	margin-top: 8px;
+	margin-left: 8px;
+}
+
+.hackathon-pic {
+	width: 70%;
+	right: 50%;
+}
+
+#hackathon-modal-content {
+	height: 70vh;
+	overflow-y: scroll;
 }

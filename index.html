@@ -113,11 +113,26 @@
   <div class="w3-modal-content w3-card-8 w3-animate-top">
     <header class="w3-container w3-theme-l1">
       <span onclick="document.getElementById('chooseHackathonDialog').style.display='none'" class="w3-closebtn">×</span>
-      <h4>Choose a hackathon</h4>
+      <h4 id="hackathon-modal-title">Choose a hackathon</h4>
+      <button ng-click="clearButtonMode()" id="clear-hackathon-button" class="w3-btn w3-dark-grey w3-hover-light-grey">Clear</button>
     </header>
-    <div class="w3-padding">
-      <button ng-repeat="hackathon in upcomingHackathons" ng-click="setCurrentHackathon(hackathon)" class="w3-btn interest-active hackathon-button">{{ hackathon.name }}</button>
-      <button ng-click="clearButtonMode()" class="w3-btn w3-gray hackathon-button">Clear</button>
+    <div id="hackathon-modal-content" class="w3-padding">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>Photo</th>
+        </tr>
+        <tr ng-repeat="hackathon in upcomingHackathons" class="w3-padding">
+          <td><button ng-click="setCurrentHackathon(hackathon)" class="w3-btn interest-active hackathon-button">{{ hackathon.name }}</button></td>
+          <td>{{ hackathon.description }}</td>
+          <td>{{ hackathon.location }}</td>
+          <td>{{ hackathon.date.toDateString() }}</td>
+          <td style="position: relative"><img src="{{ hackathon.pictureUrl }}" class="hackathon-pic"/></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
@@ -136,7 +151,7 @@
   </a>
   <div class="w3-center" id="header-content">
     <img src="resources/HackaMatch logo.png" height="300"/>
-    <h1 class="w3-xxxlarge w3-animate-bottom">HackaMatch</h1>
+    <h1 class="w3-xxxlarge w3-animate-bottom w3-animate-opacity">HackaMatch</h1>
     <h2>
       Match with
         <span ng-class="{ 'dotted-underline': findMode == 'group', 'no-dotted-underline': findMode != 'group' }">groups</span> or
