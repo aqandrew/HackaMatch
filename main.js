@@ -5,6 +5,7 @@ var hackaMatch = angular.module('hackathonAidApp', []);
 hackaMatch.controller('hackathonAidController', function ($scope) {
 	window.onSignIn = onSignIn;
 	$scope.hackerName;
+	$scope.infoLabel = 'Register';
 
 	$scope.allInterests = [
 		'Data Science',
@@ -32,6 +33,7 @@ hackaMatch.controller('hackathonAidController', function ($scope) {
 	    console.log("Email: " + profile.getEmail());
 
 	    $scope.hackerName = profile.getGivenName();
+	    $scope.infoLabel = 'My Info';
 	    $scope.$digest();
 	};
 
