@@ -160,21 +160,32 @@
 </div>
 
 <div id="main">
-  <div ng-show="findMode == 'members'" class="w3-row-padding w3-center w3-margin-top">
-    <div ng-repeat="hacker in dummyHackers" class="w3-third">
-      <div class="w3-card-4" style="min-height:460px">
-        <div class="w3-padding">
-          <h4>{{ hacker.name }}</h4><br>
+  <div ng-show="findMode == 'members'" class="w3-row-padding w3-center">
+    <div ng-repeat="hacker in dummyHackers" class="w3-quarter hacker-card">
+      <h4 class="group-header">{{ hacker.name }}</h4>
+        <div class="w3-card-4 w3-padding">
           <img src="{{ hacker.iconUrl }}" class="icon"/>
-          <h5>{{ hacker.school }}</h5>
+          <h5 class="group-subheader">{{ hacker.school }}</h5>
           {{ hacker.major }}
-          <h5>Skills</h5>
-          <p>{{ hacker.skills }}<p>
-          <h5>Interests</h5>
+          <h5 class="group-subheader">Skills</h5>
+          {{ hacker.skills }}
+          <h5 class="group-subheader">Interests</h5>
           <ul class="card-interest">
             <li ng-repeat="interest in hacker.interests">{{ interest }}</li>
           </ul>
         </div>
+    </div>
+  </div>
+
+  <div ng-show="findMode == 'group'" class="w3-row-padding w3-center w3-margin-top">
+    <div ng-repeat="group in hackerGroups" class="w3-quarter group-card">
+      <h4 class="group-header">{{ group.name }}</h4>
+      <div class="w3-card-4 w3-padding w3-padding-4">      
+        <p>"{{ group.description }}"</p>
+        <h5 class="group-subheader">Members</h5>
+        <ul class="card-interest">
+          <li ng-repeat="hackerId in group.members">{{ getHackerById(hackerId).name }}</li>
+        </ul>
       </div>
     </div>
   </div>

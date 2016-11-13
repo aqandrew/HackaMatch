@@ -164,23 +164,28 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		}
 	);
 
+	$scope.getHackerById = function (someId) {
+		return $scope.dummyHackers.find(function (someHacker) {
+			return someHacker.id == someId;
+		});
+	};
+
 	$scope.createGroup = function () {
 		alert('you just created a group!');
-		document.getElementById('createGroupDialog').style.display='none';
-		$scopee.setFindMode('member');
+		document.getElementById('createGroupDialog').style.display = 'none';
+		$scope.setFindMode('member');
 	};
 
 	$scope.clearButtonMode = function () {
-		document.getElementById('chooseHackathonDialog').style.display='none';
+		document.getElementById('chooseHackathonDialog').style.display = 'none';
 		$scope.setFindMode('');
 		$scope.setCurrentHackathon('');
 	};
 
 	$scope.setCurrentHackathon = function (hackathon) {
-		document.getElementById('chooseHackathonDialog').style.display='none';
+		document.getElementById('chooseHackathonDialog').style.display = 'none';
 		$scope.currentHackathon = hackathon;
 		document.title = 'HackaMatch // ' + hackathon.name;
-		console.log('$scope.currentHackathon: ' + $scope.currentHackathon);
 	};
 
 	function onSignIn (googleUser) {
