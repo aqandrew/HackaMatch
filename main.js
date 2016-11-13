@@ -42,7 +42,7 @@ hackaMatch.controller('hackathonAidController', function ($scope) {
 	$scope.interestClicked = function (interest) {
 		// Deactivate this interest.
 		if ($scope.isChosen(interest)) {
-			$scope.chosenInterests.splice($scope.chosenInterests.indexOf(interest));
+			$scope.chosenInterests.splice($scope.chosenInterests.indexOf(interest), 1);
 		}
 		// Activate this interest.
 		else {
