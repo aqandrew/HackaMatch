@@ -23,7 +23,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		$scope.userId;
 		$scope.userGroupNameCreation = '';
 		$scope.userGroupDescription = '';
-
+		$scope.basicImage = ["resources/shoes.jpg", "resources/cat.jpg", "resources/planet.jpg"];
 		// TODO sync chosenInterests with backend info
 		$scope.chosenInterests = [];
 	};
@@ -235,6 +235,12 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 					$scope.hackerPicture, $scope.major, $scope.chosenInterests,
 					$scope.experience, $scope.progLanguage);
 
+		//picture random
+		var picked = (Math.floor(Math.random() * 3) + 1);
+		var picturePicked = $scope.basicImage[picked];
+		console.log(picturePicked);
+
+
 		var req = {
 			method: 'POST',
 			url: 'https://hackahtonaid.appspot.com/api/users/new',
@@ -242,7 +248,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 				email: $scope.hackerEmail,
 				school: $scope.school,
 				name: $scope.hackerName,
-				picture: $scope.hackerPicture,
+				picture: picturePicked,
 				major: $scope.major,
 				interest: $scope.chosenInterests.join(','),
 				experience: $scope.experience,
