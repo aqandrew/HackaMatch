@@ -192,7 +192,7 @@
         <p>"{{ group.description }}"</p>
         <h5 class="group-subheader">Members</h5>
         <ul class="card-interest">
-          <li ng-repeat="hackerId in group.members">{{ getHackerById(hackerId).name }}</li>
+          <li ng-repeat="name in group.members">{{ name }}</li>
         </ul>
         <span class="fa fa-group add-group-icon"></span>
       </div>

@@ -66,26 +66,26 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		httpRequest.open('GET', 'https://mlh.io/seasons/na-2017/events', true);
 	};*/
 
-	$scope.hackerGroups = [
-		{
-			id: 0,
-			name: 'Team Spongedog',
-			members: [5, 6],
-			description: 'bark bark I am a happy sponge'
-		},
-		{
-			id: 1,
-			name: 'Dogbert',
-			members: [5, 7],
-			description: 'we are unstoppable'
-		},
-		{
-			id: 2,
-			name: 'Everyone',
-			members: [5, 6, 7],
-			description: 'hivemind'
-		}
-	];
+	 $scope.hackerGroups = [];
+	// 	{
+	// 		id: 0,
+	// 		name: 'Team Spongedog',
+	// 		members: [5, 6],
+	// 		description: 'bark bark I am a happy sponge'
+	// 	},
+	// 	{
+	// 		id: 1,
+	// 		name: 'Dogbert',
+	// 		members: [5, 7],
+	// 		description: 'we are unstoppable'
+	// 	},
+	// 	{
+	// 		id: 2,
+	// 		name: 'Everyone',
+	// 		members: [5, 6, 7],
+	// 		description: 'hivemind'
+	// 	}
+	// ];
 
 	$scope.allInterests = [
 		'Data Science',
@@ -286,6 +286,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 					 	'school': temp.school,
 					 	'iconUrl' : temp.pictureURL,
 					 	'major' : temp.major,
+					 	'school' : temp.school,
 					 	'github' : temp.userGitHub,
 					 	'skills' : temp.progLanguages,
 					 	'experience' : temp.experience,
@@ -297,7 +298,41 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 			});
 		}
 		else {
+			console.log($scope.currentHackathon.name);
+			var req = {
+				method: 'POST',
+				url: 'http://localhost:8080/api/users/searchHackathon',
+				data: {
+					location: $scope.currentHackathon.name
+				}
+			};
+		
+			$http(req).then(function returnOnData(res){
+				console.log(res.data[0]);
+
+				$scope.hackerGroups = [];
+
+				var temp = [];
+				var value = res.data.length;
+
+				for(var i = 0; i < value; i++)
+				{
+					temp.push(res.data[i].name);
+				}
+
+				$scope.hackerGroups = [{
+					id: res.data[0].ID,
+					name: res.data[0].groupName,
+					members: temp,
+					description: res.data[0].description
+				}];
+				console.log($scope.hackerGroup);
+				console.log(res);
+
+
+
 			$scope.findMode = mode;
+			})
 		}
 	};
 	
