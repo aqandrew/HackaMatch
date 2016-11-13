@@ -295,6 +295,9 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 				$scope.findMode = mode;
 			});
 		}
+		else {
+			$scope.findMode = mode;
+		}
 	};
 	
 	$scope.addMember = function (hacker) {
