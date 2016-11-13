@@ -15,6 +15,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	$scope.userGroupID;
 	$scope.groupSlackID;
 	$scope.groupGitHub;
+	$scope.groupDescription;
 	$scope.infoLabel = 'Register';
 	$scope.upcomingHackathons = [
 		'HackHeaven',
@@ -103,6 +104,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    	}
 	    };
 	    $http(req).then(function returnData(res){
+	    	console.log(res);
 	    	console.log(res.data[0]);
     		$scope.userGroupName = res.data[0].name;
 			$scope.userGroupID = res.data[0].groupID;
@@ -113,6 +115,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    	$scope.progLanguage = res.data[0].progLanguage;
 	    	$scope.groupSlackID = res.data[0].slackID;
 	    	$scope.groupGitHub = res.data[0].ghSite;
+	    	$scope.groupDescription = res.data[0].description;
 	    });
 
 	    $scope.$digest();
