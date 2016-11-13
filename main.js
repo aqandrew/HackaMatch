@@ -243,7 +243,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 
 		var req = {
 			method: 'POST',
-			url: 'http://localhost:8080/api/users/new',
+			url: 'https://hackahtonaid.appspot.com/api/users/new',
 			data:{
 				email: $scope.hackerEmail,
 				school: $scope.school,
@@ -301,7 +301,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 			console.log($scope.currentHackathon.name);
 			var req = {
 				method: 'POST',
-				url: 'http://localhost:8080/api/users/searchHackathon',
+				url: 'https://hackahtonaid.appspot.com/api/users/searchHackathon',
 				data: {
 					location: $scope.currentHackathon.name
 				}
