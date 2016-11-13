@@ -84,20 +84,25 @@
       <h4>Create a group</h4>
     </header>
     <div class="w3-padding">
-      <form ng-submit="createGroup(currentGroup)">
+      <form>
         <div class="w3-group">
-          <input ng-model="currentGroup" class="w3-input" type="text" required>
+          <input ng-model="userGroupName" class="w3-input" type="text" required>
           <label class="w3-label">Group name</label>
         </div>
         <div class="w3-group">
-          <input class="w3-input" type="text">
+          <input class="w3-input" ng-model="groupGitHub"type="text">
           <label class="w3-label">Github repository url</label>
         </div>
         <div class="w3-group">
-          <input class="w3-input" type="text">
+          <input class="w3-input" type="text" ng-model="groupSlackID">
           <label class="w3-label">Slack url</label>
         </div>
-        <button type="submit" class="w3-btn w3-indigo w3-large">Submit</button>
+        <div class="w3-group">
+          <textarea rows="4" cols="40" class="w3-input" ng-model="userGroupDescription">
+          </textarea>
+          <label class="w3-label">Group Description</label>
+        </div>
+        <button ng-click="makeGroup()" class="w3-btn w3-indigo w3-large">Submit</button>
       </form>  
     </div>
   </div>

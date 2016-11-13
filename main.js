@@ -20,6 +20,9 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		$scope.currentHackathon = '';
 		$scope.findMode = '';
 		$scope.currentGroup = '';
+		$scope.userId;
+		$scope.userGroupNameCreation = '';
+		$scope.userGroupDescription = '';
 
 		// TODO sync chosenInterests with backend info
 		$scope.chosenInterests = [];
@@ -27,6 +30,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 
 	$scope.wipeInfo();
 	window.onSignIn = onSignIn;
+
 	$scope.upcomingHackathons = [
 		{
 			name: 'HackHeaven',
@@ -176,6 +180,26 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		$scope.setFindMode('member');
 	};
 
+	$scope.makeGroup = function() {
+		var req = {
+			method: 'POST',
+			url: 'https://hackahtonaid.appspot.com/api/users/newGroup',
+			data : {
+				location: $scope.currentHackathon,
+				name: $scope.userGroupName,
+				gitHub: $scope.groupGitHub,
+				slack: $scope.groupSlackID,
+				description: $scope.userGroupDescription,
+				userId: $scope.userId
+			}
+		};
+
+		$http(req).then(function returnData(res){
+			document.getElementById('createGroupDialog').style.display='none';
+			$scope.setFindMode('member');
+		});
+	};
+
 	$scope.clearButtonMode = function () {
 		document.getElementById('chooseHackathonDialog').style.display = 'none';
 		$scope.setFindMode('');
@@ -208,7 +232,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    };
 	    $http(req).then(function returnData(res){
 	    	console.log(res);
-    		$scope.userGroupName = res.data[0].name;
+    		$scope.userGroupName = res.data[0].groupName;
 			$scope.userGroupID = res.data[0].groupID;
 	    	$scope.school = res.data[0].school;
 	    	$scope.major = res.data[0].major;
@@ -217,6 +241,8 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    	$scope.progLanguage = res.data[0].progLanguages;
 	    	$scope.groupSlackID = res.data[0].slackID;
 	    	$scope.groupGitHub = res.data[0].ghSite;
+	    	$scope.userGroupDescription = res.data[0].description;
+	    	$scope.userId = res.data[0].ID;
 	    });
 
 	    $scope.isSignedIn = true;
