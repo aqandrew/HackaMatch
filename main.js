@@ -302,7 +302,12 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	};
 	
 	$scope.addMember = function (hacker) {
-		console.log(hacker);
+		console.log('sending a request for ' + hacker.name + ' to join your group');
+		// TODO integrate with backend
+	}
+
+	$scope.addGroup = function (group) {
+		console.log('requesting access to group ' + group.name);
 		// TODO integrate with backend
 	}
 });

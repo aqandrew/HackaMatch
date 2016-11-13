@@ -120,21 +120,29 @@ body, h2, h3, h4, h5, h6 {
 	height: 100%;
 }
 
-.icon-wrapper .add-member-icon {
+.icon-wrapper .add-member-icon, .icon-wrapper .add-group-icon {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	font-size: 20vh;
 	width: 100%;
 	height: 100%;
-	transform: translate(-50%, -50%);
 	opacity: 0;
 	-webkit-transition: opacity 0.25s ease;
     transition: opacity 0.25s ease;
     background-color: rgba(255, 255, 255, 0.6);
 }
 
-.hacker-card:hover .add-member-icon {
+.icon-wrapper .add-member-icon {
+	transform: translate(-50%, -50%);
+	font-size: 20vh;
+}
+
+.icon-wrapper .add-group-icon {
+	transform: translate(-50%, -50%);
+	font-size: 10vh;
+}
+
+.hacker-card:hover .add-member-icon, .group-card:hover .add-group-icon {
 	opacity: 1;
 }
 
@@ -158,6 +166,8 @@ body, h2, h3, h4, h5, h6 {
 
 .group-card {
 	max-height: 200px;
+	cursor: pointer;
+	position: relative;
 }
 
 .group-header {
