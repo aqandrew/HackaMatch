@@ -5,12 +5,16 @@ var hackaMatch = angular.module('hackathonAidApp', []);
 hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	window.onSignIn = onSignIn;
 	$scope.hackerName;
+<<<<<<< HEAD
 	$scope.school;
 	$scope.hackerEmail;
 	$scope.hackerPicture;
 	$scope.major;
 	$scope.experience = 0;
 	$scope.progLanguage;
+=======
+	$scope.infoLabel = 'Register';
+>>>>>>> origin/master
 
 	$scope.allInterests = [
 		'Data Science',
@@ -38,6 +42,7 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    $scope.hackerEmail = profile.getEmail();
 
 	    $scope.hackerName = profile.getGivenName();
+	    $scope.infoLabel = 'My Info';
 	    $scope.$digest();
 	};
 
