@@ -66,11 +66,11 @@
             <label class="w3-label">Major</label>
           </div>
           <div class="w3-dropdown-hover">
-            <button class="w3-btn w3-red">Hackathon Experience</button>
+            <button class="w3-btn w3-red">Previous Hackathons</button>
             <div class="w3-dropdown-content w3-border">
-              <a href="#">Novice (0)</a>
-              <a href="#">Veteran (1-5)</a>
-              <a href="#">Expert (5+)</a>
+              <a href="#">0: Novice</a>
+              <a href="#">1-5: Veteran</a>
+              <a href="#">5+: Expert</a>
             </div>
           </div>
           <div class="w3-group">
@@ -543,9 +543,10 @@ class creates progress bars:</p>
 <!-- Trianglify the background! -->
 <script>
   var greys = ['#8B8B8B', '#000000'];
+
   var triUri = Trianglify({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: screen.width,
+    height: screen.height,
     x_colors: greys,
     y_colors: greys
   }).png();
