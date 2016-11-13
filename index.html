@@ -26,8 +26,10 @@
       </header>
       <div class="w3-padding">
         <form ng-submit="submitRegisterForm()">
-          <div class="g-signin2" data-onsuccess="onSignIn"></div>
-          <h3 ng-if="true">Hi, {{hackerName}}!</h3>
+          <div ng-if="!isSignedIn">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+          </div>
+          <h3 ng-if="isSignedIn">Hi, {{hackerName}}!</h3>
           <div class="w3-group">
             <input class="w3-input" type="text" ng-model="school" required>
             <label class="w3-label">School</label>

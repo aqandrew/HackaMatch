@@ -4,6 +4,7 @@ var hackaMatch = angular.module('hackathonAidApp', []);
 
 hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	window.onSignIn = onSignIn;
+	$scope.isSignedIn = false;
 	$scope.hackerName;
 	$scope.school;
 	$scope.hackerEmail;
@@ -69,22 +70,6 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 			]
 		},
 		{
-			'id': 6,
-			'name': 'Spongebob Squarepants',
-			'iconUrl': 'https://pbs.twimg.com/profile_images/549306202245824512/tH0FYilQ.jpeg',
-			'school': "Mrs. Puff's Boating School",
-			'major': 'Fry Cookery',
-			'github': 'spengbab',
-			'skills': 'fine dining, breathing, JavaScript',
-			'experience': 2,
-			'interests': [
-				'Full-Stack Development',
-				'Video Games/Virtual Reality',
-				'Mobile Development',
-				'Graphic Design'
-			]
-		},
-		{
 			'id': 7,
 			'name': 'Albert Lo',
 			'iconUrl': 'resources/lestWeForget.png',
@@ -104,6 +89,22 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 				'Video Games/Virtual Reality',
 				'Graphic Design',
 				'Business'
+			]
+		},
+		{
+			'id': 6,
+			'name': 'Spongebob Squarepants',
+			'iconUrl': 'https://pbs.twimg.com/profile_images/549306202245824512/tH0FYilQ.jpeg',
+			'school': "Mrs. Puff's Boating School",
+			'major': 'Fry Cookery',
+			'github': 'spengbab',
+			'skills': 'fine dining, breathing, JavaScript',
+			'experience': 2,
+			'interests': [
+				'Full-Stack Development',
+				'Video Games/Virtual Reality',
+				'Mobile Development',
+				'Graphic Design'
 			]
 		}
 	];
@@ -209,9 +210,8 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 	    	$scope.groupGitHub = res.data[0].ghSite;
 	    });
 
+	    $scope.isSignedIn = true;
 	    $scope.$digest();
-
-
 	}
 
 	$scope.isChosen = function (interest) {
