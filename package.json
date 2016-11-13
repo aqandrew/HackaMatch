@@ -1,14 +1,14 @@
 {
-  "name": "Parents",
+  "name": "HackaMatch",
   "version": "0.0.1",
-  "description": "Your friendly reminder to do your damn chores!",
+  "description": "Match with groups or hackers at your hackathon!",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/n-gottschalt/hackupstate.git"
+    "url": "https://github.com/dawneraq/HackaMatch.git"
   },
   "keywords": [
     "jwt",
@@ -18,9 +18,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/n-gottschalt/hackupstate"
+    "url": "https://github.com/dawneraq/HackaMatch"
   },
-  "homepage": "https://github.com/n-gottschalt/hackupstate",
+  "homepage": "https://github.com/dawneraq/HackaMatch",
   "dependencies": {
     "audiobuffer-to-wav": "^1.0.0",
     "body-parser": "^1.6.5",
