@@ -1,0 +1,43 @@
+{
+  "name": "Parents",
+  "version": "0.0.1",
+  "description": "Your friendly reminder to do your damn chores!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n-gottschalt/hackupstate.git"
+  },
+  "keywords": [
+    "jwt",
+    "auth0"
+  ],
+  "contributors": [
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/n-gottschalt/hackupstate"
+  },
+  "homepage": "https://github.com/n-gottschalt/hackupstate",
+  "dependencies": {
+    "audiobuffer-to-wav": "^1.0.0",
+    "body-parser": "^1.6.5",
+    "compression": "^1.0.11",
+    "cors": "^2.4.1",
+    "dotenv": "^0.4.0",
+    "errorhandler": "^1.1.1",
+    "express": "^4.8.5",
+    "express-jwt": "^0.3.1",
+    "google-auth-library": "^0.9.8",
+    "googleapis": "^14.0.0",
+    "jsonwebtoken": "^5.7.0",
+    "lodash": "^2.4.1",
+    "morgan": "^1.2.3",
+    "nodemon": "^1.9.2",
+    "q": "^1.4.1",
+    "sequelize": "^3.23.3",
+    "sqlite3": "^3.1.4"
+  }
+}
