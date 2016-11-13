@@ -76,9 +76,9 @@
           <div class="w3-group">
             <ul class="interest-list">
               <li ng-repeat="interest in allInterests">
-                <button class="w3-btn w3-round-xxlarge interest-button" ng-class="{'interest-active': isActive(interest), 'interest-inactive': !isActive(interest)}" ng-click="interestClicked(interest)" id="{{kebabify(interest)}}-button">
+                <div class="w3-btn w3-round-xxlarge interest-button" ng-class="{'interest-active': isChosen(interest), 'interest-inactive': !isChosen(interest)}" ng-click="interestClicked(interest)" id="{{kebabify(interest)}}-button">
                   {{interest}}
-                </button>
+                </div>
               </li>
             </ul>
             <label class="w3-label">Interests</label>

@@ -5,3 +5,19 @@ h1 {
 body {
 	font-family: 'Roboto', sans-serif;
 }
+
+.interest-list > li {
+	display: inline;
+}
+
+.interest-button {
+	margin: 2px;
+}
+
+.interest-active {
+	background-color: #5373B8;
+}
+
+.interest-inactive {
+	background-color: #AABEE8;
+}
