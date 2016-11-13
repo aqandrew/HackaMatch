@@ -3,27 +3,56 @@
 var hackaMatch = angular.module('hackathonAidApp', []);
 
 hackaMatch.controller('hackathonAidController', function ($scope, $http) {
+	$scope.wipeInfo = function () {
+		$scope.isSignedIn = false;
+		$scope.hackerName = '';
+		$scope.school = '';
+		$scope.hackerEmail = '';
+		$scope.hackerPicture = '';
+		$scope.major = '';
+		$scope.experience = 0;
+		$scope.progLanguage = [];
+		$scope.userGroupName = '';
+		$scope.userGroupID = '';
+		$scope.groupSlackID = '';
+		$scope.groupGitHub = '';
+		$scope.infoLabel = 'Register';
+		$scope.currentHackathon = '';
+		$scope.findMode = '';
+		$scope.currentGroup = '';
+		$scope.userId;
+		$scope.userGroupNameCreation = '';
+		$scope.userGroupDescription = '';
+
+		// TODO sync chosenInterests with backend info
+		$scope.chosenInterests = [];
+	};
+
+	$scope.wipeInfo();
 	window.onSignIn = onSignIn;
-	$scope.isSignedIn = false;
-	$scope.hackerName;
-	$scope.school;
-	$scope.hackerEmail;
-	$scope.hackerPicture;
-	$scope.major;
-	$scope.experience = 0;
-	$scope.progLanguage;
-	$scope.userGroupName;
-	$scope.userGroupID;
-	$scope.groupSlackID;
-	$scope.groupGitHub;
-	$scope.infoLabel = 'Register';
-	$scope.userId;
+// <<<<<<< HEAD
+// 	$scope.isSignedIn = false;
+// 	$scope.hackerName;
+// 	$scope.school;
+// 	$scope.hackerEmail;
+// 	$scope.hackerPicture;
+// 	$scope.major;
+// 	$scope.experience = 0;
+// 	$scope.progLanguage;
+// 	$scope.userGroupName;
+// 	$scope.userGroupID;
+// 	$scope.groupSlackID;
+// 	$scope.groupGitHub;
+// 	$scope.infoLabel = 'Register';
+// 	$scope.userId;
 
-	//Group variables
-	$scope.userGroupNameCreation;
-	$scope.userGroupDescription;
+// 	//Group variables
+// 	$scope.userGroupNameCreation;
+// 	$scope.userGroupDescription;
 
 
+// =======
+// >>>>>>> origin/master
 	$scope.upcomingHackathons = [
 		{
 			name: 'HackHeaven',
@@ -58,9 +87,6 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		// TODO make the list year-agnostic
 		httpRequest.open('GET', 'https://mlh.io/seasons/na-2017/events', true);
 	};*/
-	$scope.currentHackathon = '';
-	$scope.findMode = '';
-	$scope.currentGroup = '';
 	$scope.dummyHackers = [
 		{
 			'id': 5,
@@ -148,9 +174,6 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 		'Graphic Design',
 		'Business'
 	];
-
-	// TODO sync chosenInterests with backend info
-	$scope.chosenInterests = [];
 
 	$scope.$watch(
 		function () {
@@ -243,6 +266,16 @@ hackaMatch.controller('hackathonAidController', function ($scope, $http) {
 
 	    $scope.isSignedIn = true;
 	    $scope.$digest();
+	}
+
+	$scope.signOut = function () {
+		var auth2 = gapi.auth2.getAuthInstance();
+	    auth2.signOut().then(function () {
+			$scope.wipeInfo();
+			$scope.isSignedIn = false;
+			$scope.$digest();
+			console.log('User signed out.');
+	    });
 	}
 
 	$scope.isChosen = function (interest) {
